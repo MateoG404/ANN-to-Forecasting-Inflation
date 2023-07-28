@@ -87,16 +87,14 @@ df_2020 = extract_data(excel_inflation_folder, 10,197,20,"8")
 df_2019 = extract_data(excel_inflation_folder, 10,197,19,"7")
 
 # Export DataFrame to CSV
-df_2019.to_csv(current_directory + "/df_2019", index=False)
-df_2020.to_csv(current_directory + "/df_2020", index=False)
-df_2021.to_csv(current_directory + "/df_2021", index=False)
-df_2022.to_csv(current_directory + "/df_2022", index=False)
+df_2019.to_csv(current_directory + "/df_2019.csv", index=False)
+df_2020.to_csv(current_directory + "/df_2020.csv", index=False)
+df_2021.to_csv(current_directory + "/df_2021.csv", index=False)
+df_2022.to_csv(current_directory + "/df_2022.csv", index=False)
 
 
 # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
  
-
-
 
 # c) osea que al correr este .py me descargue los archivos del DANE y despues los abra y me genere el xlsx que estoy necesitando, que ese sea el output
 # d) y luego que eliminé los archivos descargados, es decir una descarga temporal, porque no me interesa tenerlos en mi repositorio
