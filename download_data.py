@@ -6,7 +6,7 @@ import openpyxl
 
 # Función que extrae los datos de determinado rango de filas y columnas de todos los exceles de una carpeta y da como output un dataframe
 
-def extract_data(folder_path, row_min, row_max, column_min, column_max, year, sheet):
+def extract_data(folder_path, row_min, row_max, year, sheet):
     
     dataset = []
 
@@ -31,9 +31,7 @@ def extract_data(folder_path, row_min, row_max, column_min, column_max, year, sh
 
                 # iteramos el rango de filas seleccionadas por el usuario y guardamos los datos de estas filas en la lista data
                 for row in sheet_choice.iter_rows(min_row = row_min, max_row=row_max, values_only=True):
-                    # sliceamos solo las columnas de nuestro interes
-                    sliced_row = row[column_min - 1: column_max] 
-                    data.append(sliced_row)
+                    data.append(row)
 
                 # añadimos estos datos a dataset     
                 dataset.extend(data)
@@ -43,17 +41,6 @@ def extract_data(folder_path, row_min, row_max, column_min, column_max, year, sh
     
     # Convertimos todo lo almacenado del año en un dataframe
     df = pd.DataFrame(dataset)
-
-    #Añadimos una columna de fecha a ese dataframe
-    date = []
-
-    for mes in range(1,13):
-        for n in range(row_max - row_min):
-           date.append(str(mes) + "-" + str(year))
-
-    df["date"] = date
-
-    #devolvemos el dataframe
     return df
 
 #Declaramos las variables necesarias para generar la URL e iterar para descargar los .xlxs
@@ -94,15 +81,17 @@ else:
 
 # Corremos la función los años necesarios
 
-df_2022 = extract_data(excel_inflation_folder, 10,197,1,9,22,8)
-df_2021 = extract_data(excel_inflation_folder, 10,197,1,9,21,8)
-df_2020 = extract_data(excel_inflation_folder, 10,197,1,9,20,8)
-df_2019 = extract_data(excel_inflation_folder, 10,197,4,12,19,7)
+df_2022 = extract_data(excel_inflation_folder, 10,197,22,"8")
+df_2021 = extract_data(excel_inflation_folder, 10,197,21,"8")
+df_2020 = extract_data(excel_inflation_folder, 10,197,20,"8")
+df_2019 = extract_data(excel_inflation_folder, 10,197,19,"7")
 
-print(df_2019)
-print(df_2021)
-print(df_2022)
-print(df_2023)
+# Export DataFrame to CSV
+df_2019.to_csv(current_directory + "/df_2019", index=False)
+df_2020.to_csv(current_directory + "/df_2020", index=False)
+df_2021.to_csv(current_directory + "/df_2021", index=False)
+df_2022.to_csv(current_directory + "/df_2022", index=False)
+
 
 # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
  
