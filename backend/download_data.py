@@ -15,7 +15,9 @@ class download_data:
         self.excel_inflation_folder = os.path.join(os.getcwd(), "data", "excel_inflation")    
 
     # Función que extrae los datos de determinado rango de filas y columnas de todos los exceles de una carpeta y da como output un dataframe
-    def extract_data(self,folder_path, row_min, row_max, year, sheet):
+    def extract_data(self, name_df, row_min, row_max, year, sheet, folder_path=None):
+        if folder_path is None:
+            folder_path = self.excel_inflation_folder    
         
         dataset = []
 
@@ -50,7 +52,9 @@ class download_data:
         
         # Convertimos todo lo almacenado del año en un dataframe
         df = pd.DataFrame(dataset)
-        return df
+        
+        # Guardar df en formato pickle
+        df.to_pickle(os.path.join(self.current_directory,"data","dataframes",str(name_df + ".pkl")))
 
     # Create excel_inflation folder
     def creation_folder(self):
@@ -97,20 +101,6 @@ class download_data:
 
 
     '''
-
-    # Corremos la función los años necesarios
-
-    df_2022 = extract_data(excel_inflation_folder, 10,197,22,"8")
-    df_2021 = extract_data(excel_inflation_folder, 10,197,21,"8")
-    df_2020 = extract_data(excel_inflation_folder, 10,197,20,"8")
-    df_2019 = extract_data(excel_inflation_folder, 10,197,19,"7")
-
-    # Export DataFrame to CSV
-    df_2019.to_csv(current_directory + "/df_2019.csv", index=False)
-    df_2020.to_csv(current_directory + "/df_2020.csv", index=False)
-    df_2021.to_csv(current_directory + "/df_2021.csv", index=False)
-    df_2022.to_csv(current_directory + "/df_2022.csv", index=False)
-
 
     # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
     
