@@ -100,13 +100,13 @@ class download_data:
         self.data_folder_check()
 
 
+
     '''
-
-    # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
     
-
+    # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
     # c) osea que al correr este .py me descargue los archivos del DANE y despues los abra y me genere el xlsx que estoy necesitando, que ese sea el output
     # d) y luego que eliminé los archivos descargados, es decir una descarga temporal, porque no me interesa tenerlos en mi repositorio
+    
     '''
 
 
