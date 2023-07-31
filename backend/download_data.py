@@ -5,10 +5,10 @@ import sys
 import openpyxl 
 
 class download_data:
-
+ 
     def __init__(self) :
 
-        self. meses = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+        self.meses = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
         self.años = ["19", "20", "21", "22"]
         self._url_dane = "https://www.dane.gov.co/files/investigaciones/boletines/ipc/anexo_ipc_"
         self.current_directory = os.getcwd().replace("\\","/")
@@ -101,12 +101,11 @@ class download_data:
 
 
     '''
-
-    # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
     
-
+    # descargados todos los exceles debemos abrirlos, extraer los datos y pegarlos en un nuevo dataset añadiendo la columna data
     # c) osea que al correr este .py me descargue los archivos del DANE y despues los abra y me genere el xlsx que estoy necesitando, que ese sea el output
     # d) y luego que eliminé los archivos descargados, es decir una descarga temporal, porque no me interesa tenerlos en mi repositorio
+    
     '''
 
 

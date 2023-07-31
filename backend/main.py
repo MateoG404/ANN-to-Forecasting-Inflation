@@ -1,7 +1,7 @@
 from download_data import download_data
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # Saber si se esta ejecutando como script o como modulo
 
     descarga_datos = download_data()
     descarga_datos.download_sheets()
